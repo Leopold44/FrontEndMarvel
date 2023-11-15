@@ -1,0 +1,133 @@
+/* --------------------General-------------------- */
+@import url("https://fonts.googleapis.com/css2?family=Marvel&display=swap");
+body {
+  background-color: #1a1b1d;
+}
+
+.button {
+  background-color: red;
+  border-style: none;
+  border-radius: 3px;
+  font-family: "Marvel", sans-serif;
+  color: white;
+  font-size: 17px;
+  font-weight: bold;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.button:hover {
+  cursor: pointer;
+  font-size: 19px;
+  border: 0.1px solid white;
+}
+h2 {
+  font-family: "Marvel", sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+}
+p {
+  font-family: "Marvel", sans-serif;
+  font-size: 15px;
+}
+
+/* --------------------Header-------------------- */
+header {
+  height: 90px;
+  background-color: #131414;
+  border-bottom: red solid 0.1px;
+}
+header > div {
+  height: 100%;
+  margin: 0 90px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+header img {
+  height: 60px;
+  border-radius: 3px;
+}
+header > div > div {
+  display: flex;
+  gap: 30px;
+}
+header .button {
+  height: 35px;
+  width: 120px;
+}
+.img:hover {
+  cursor: pointer;
+  border: 5px solid white;
+}
+
+/* --------------------Home-------------------- */
+.characters > section {
+  margin: 20px 90px;
+}
+.characters > section:first-child {
+  position: relative;
+}
+.characters > section > input {
+  height: 30px;
+  width: 500px;
+  border-style: none;
+  outline: none;
+  border-radius: 5px;
+  background-color: white;
+  padding-left: 35px;
+  font-size: 20px;
+  font-family: "Marvel", sans-serif;
+}
+.characters > section > input:target {
+  background-color: red;
+}
+.characters > section > .glass {
+  font-size: 20px;
+  position: absolute;
+  left: 10px;
+  top: 5px;
+}
+.characters > section:last-child {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 21.7px;
+}
+.characterBox {
+  background-color: white;
+  height: 310px;
+  width: 240px;
+  border-radius: 5px;
+  position: relative;
+}
+.characterBox:hover {
+  cursor: pointer;
+}
+.characterBox > img {
+  height: 200px;
+  width: 100%;
+  object-fit: cover;
+  object-position: top;
+  border-radius: 5px 5px 0px 0px;
+  margin-bottom: 10px;
+}
+.characterBox > h2 {
+  margin: 0 10px;
+  margin-bottom: 10px;
+}
+.characterBox > p {
+  margin: 0 10px;
+  height: 60px;
+  overflow: hidden;
+}
+.heart {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 20px;
+  color: white;
+}
+.heart:hover {
+  color: red;
+}
