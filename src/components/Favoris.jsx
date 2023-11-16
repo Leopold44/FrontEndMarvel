@@ -53,6 +53,7 @@ const Favoris = ({
   ) : (
     <main className="favoris">
       <section>
+        <h1>Tes personnages préférés</h1>
         <div className="caroussel">
           {data.characters.map((x) => {
             return (
@@ -89,36 +90,39 @@ const Favoris = ({
             );
           })}
         </div>
-        <div className="caroussel">
-          {data.comics.map((x) => {
-            return (
-              <div key={x.id} className="characterBox">
-                <img src={x.picture} alt="pictureComics" />
-                <h2>{x.name}</h2>
-                <p>{x.description}</p>
-                {comics.find((elem) => elem === x.id) ? (
-                  <FontAwesomeIcon
-                    icon={faHeartSolid}
-                    className="heartRed"
-                    onClick={(event) => {
-                      event.stopPropagation();
-                      addFavoris(x.id);
-                    }}
-                  />
-                ) : (
-                  <FontAwesomeIcon
-                    icon={faHeartRegular}
-                    className="heartWhite"
-                    onClick={(event) => {
-                      event.stopPropagation();
-                      addFavoris(x.id);
-                    }}
-                  />
-                )}
-              </div>
-            );
-          })}
-        </div>
+        <section>
+          <h1>Tes comics préférés</h1>
+          <div className="caroussel">
+            {data.comics.map((x) => {
+              return (
+                <div key={x.id} className="characterBox">
+                  <img src={x.picture} alt="pictureComics" />
+                  <h2>{x.name}</h2>
+                  <p>{x.description}</p>
+                  {comics.find((elem) => elem === x.id) ? (
+                    <FontAwesomeIcon
+                      icon={faHeartSolid}
+                      className="heartRed"
+                      onClick={(event) => {
+                        event.stopPropagation();
+                        addFavoris(x.id);
+                      }}
+                    />
+                  ) : (
+                    <FontAwesomeIcon
+                      icon={faHeartRegular}
+                      className="heartWhite"
+                      onClick={(event) => {
+                        event.stopPropagation();
+                        addFavoris(x.id);
+                      }}
+                    />
+                  )}
+                </div>
+              );
+            })}
+          </div>
+        </section>
       </section>
     </main>
   );

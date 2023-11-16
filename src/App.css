@@ -158,11 +158,15 @@ header button {
 
 /* --------------------Home-------------------- */
 .characters > section {
-  margin: 20px 90px;
+  margin: 0px 90px;
 }
 .characters > section:first-child {
-  position: relative;
-  border: red solid;
+  display: flex;
+  padding: 20px 0px;
+  position: sticky;
+  background-color: #1a1b1d;
+  top: 90px;
+  z-index: 1;
 }
 .characters > section > input {
   height: 30px;
@@ -181,8 +185,8 @@ header button {
 .characters > section > .glass {
   font-size: 20px;
   position: absolute;
-  left: 10px;
-  top: 5px;
+  left: 7px;
+  top: 25px;
 }
 .characters > section:last-child {
   display: flex;
@@ -191,7 +195,6 @@ header button {
 }
 .characterBox {
   background-color: white;
-  height: 310px;
   width: 213px;
   border-radius: 5px;
   position: relative;
@@ -200,7 +203,7 @@ header button {
   cursor: pointer;
 }
 .characterBox > img {
-  height: 200px;
+  height: 180px;
   width: 100%;
   object-fit: cover;
   object-position: top;
@@ -213,8 +216,9 @@ header button {
 }
 .characterBox > p {
   margin: 0 10px;
-  height: 60px;
+  height: 30px;
   overflow: hidden;
+  margin-bottom: 10px;
 }
 .heartRed {
   position: absolute;
@@ -235,8 +239,13 @@ header button {
 }
 
 /* --------------------Favoris-------------------- */
+.favoris h1 {
+  color: white;
+  font-size: 25px;
+  margin: 15px 0;
+}
 .favoris > section {
-  margin: 20px 90px;
+  margin: 0px 90px;
 }
 .caroussel {
   display: flex;
