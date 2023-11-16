@@ -118,7 +118,7 @@ header button {
   border-radius: 5px;
   position: absolute;
   top: 200px;
-  left: 530px;
+  left: 460px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -255,4 +255,14 @@ header button {
 }
 .caroussel > .characterBox {
   flex-shrink: 0;
+}
+
+.transition {
+  /* background-color: red; */
+  position: absolute;
+  top: 350px;
+  left: 600px;
+}
+.transition > img {
+  height: 100px;
 }

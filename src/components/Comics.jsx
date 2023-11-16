@@ -1,3 +1,5 @@
+import logo from "/logo.png";
+import { motion } from "framer-motion";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -45,7 +47,22 @@ const Comics = ({ token, setVisibleAuthentication, comics, setComics }) => {
   };
 
   return isLoading ? (
-    <p>Page en-cours de chargement</p>
+    <motion.div
+      className="transition"
+      animate={{
+        scale: [1, 2, 2, 2, 1],
+        rotate: [0, 90, 90, 180, 0],
+      }}
+      transition={{
+        duration: 1,
+        ease: "easeInOut",
+        times: [0, 0.2, 0.5, 0.8, 1],
+        repeat: Infinity,
+        repeatDelay: 1,
+      }}
+    >
+      <img src={logo} alt="" />
+    </motion.div>
   ) : (
     <main className="characters">
       <section>
