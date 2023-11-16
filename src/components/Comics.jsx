@@ -1,17 +1,21 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHeart } from "@fortawesome/free-regular-svg-icons";
-import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+import { faHeart as faHeartRegular } from "@fortawesome/free-regular-svg-icons";
+import {
+  faMagnifyingGlass,
+  faHeart as faHeartSolid,
+} from "@fortawesome/free-solid-svg-icons";
+import Cookies from "js-cookie";
 
-const Comics = () => {
+const Comics = ({ token, setVisibleAuthentication, comics, setComics }) => {
   const [page, setPage] = useState(1);
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const [search, setSearch] = useState("");
   useEffect(() => {
     const fetchData = async () => {
-      const response = await axios.get(
+      const response = await axios.post(
         `http://localhost:3000/comics/?page=${page}`,
         {
           title: search,
@@ -22,6 +26,23 @@ const Comics = () => {
     };
     fetchData();
   }, [search]);
+
+  const addFavoris = async (comicsId) => {
+    try {
+      if (!token) {
+        setVisibleAuthentication("signIn");
+      } else {
+        const response = await axios.post(
+          `http://localhost:3000/comics/${comicsId}`,
+          { token }
+        );
+        Cookies.set("comics", response.data.comics);
+        setComics(response.data.comics);
+      }
+    } catch (error) {
+      console.log(error.response.data);
+    }
+  };
 
   return isLoading ? (
     <p>Page en-cours de chargement</p>
@@ -40,13 +61,29 @@ const Comics = () => {
         <FontAwesomeIcon icon={faMagnifyingGlass} className="glass" />
       </section>
       <section>
-        {data.map((char) => {
+        {data.map((x) => {
           return (
-            <div key={char.id} className="characterBox">
-              <img src={char.picture} alt="pictureCharacter" />
-              <h2>{char.name}</h2>
-              <p>{char.description}</p>
-              <FontAwesomeIcon icon={faHeart} className="heart" />
+            <div key={x.id} className="characterBox">
+              <img src={x.picture} alt="pictureCharacter" />
+              <h2>{x.name}</h2>
+              <p>{x.description}</p>
+              {comics.find((elem) => elem === x.id) ? (
+                <FontAwesomeIcon
+                  icon={faHeartSolid}
+                  className="heartRed"
+                  onClick={() => {
+                    addFavoris(x.id);
+                  }}
+                />
+              ) : (
+                <FontAwesomeIcon
+                  icon={faHeartRegular}
+                  className="heartWhite"
+                  onClick={() => {
+                    addFavoris(x.id);
+                  }}
+                />
+              )}
             </div>
           );
         })}

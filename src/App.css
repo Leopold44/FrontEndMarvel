@@ -3,7 +3,9 @@
 body {
   background-color: #1a1b1d;
 }
-
+.app {
+  position: relative;
+}
 .button {
   background-color: red;
   border-style: none;
@@ -22,6 +24,30 @@ body {
   font-size: 19px;
   border: 0.1px solid white;
 }
+button {
+  background-color: black;
+  border: red solid 1px;
+  border-style: solid;
+  border-radius: 3px;
+  font-family: "Marvel", sans-serif;
+  color: white;
+  font-size: 17px;
+  font-weight: bold;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+button:hover {
+  cursor: pointer;
+  font-size: 19px;
+  border: 0.1px solid white;
+}
+h1 {
+  font-family: "Marvel", sans-serif;
+  font-size: 40px;
+  font-weight: bold;
+}
 h2 {
   font-family: "Marvel", sans-serif;
   font-size: 20px;
@@ -31,12 +57,20 @@ p {
   font-family: "Marvel", sans-serif;
   font-size: 15px;
 }
+label {
+  font-family: "Marvel", sans-serif;
+  font-weight: bold;
+  font-size: 20px;
+}
 
 /* --------------------Header-------------------- */
 header {
   height: 90px;
   background-color: #131414;
   border-bottom: red solid 0.1px;
+  position: sticky;
+  top: 0px;
+  z-index: 1;
 }
 header > div {
   height: 100%;
@@ -57,9 +91,69 @@ header .button {
   height: 35px;
   width: 120px;
 }
+header button {
+  height: 35px;
+  width: 120px;
+}
 .img:hover {
   cursor: pointer;
   border: 5px solid white;
+}
+
+/* --------------------Sign-------------------- */
+.background {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0px;
+  left: 0px;
+  height: 100%;
+  width: 100vw;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.sign {
+  background-color: white;
+  width: 400px;
+  border-radius: 5px;
+  position: absolute;
+  top: 200px;
+  left: 530px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 60px 20px;
+  gap: 30px;
+}
+.sign > div {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.sign input {
+  height: 30px;
+  width: 300px;
+  border-style: solid;
+  border: none;
+  border-bottom: #131414 solid;
+}
+.sign .xmark {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  font-size: 30px;
+}
+.sign .xmark:hover {
+  position: absolute;
+  cursor: pointer;
+  right: 15px;
+  top: 15px;
+  font-size: 30px;
+}
+.sign button {
+  height: 35px;
+  width: 120px;
+  background-color: red;
 }
 
 /* --------------------Home-------------------- */
@@ -68,6 +162,7 @@ header .button {
 }
 .characters > section:first-child {
   position: relative;
+  border: red solid;
 }
 .characters > section > input {
   height: 30px;
@@ -97,7 +192,7 @@ header .button {
 .characterBox {
   background-color: white;
   height: 310px;
-  width: 240px;
+  width: 213px;
   border-radius: 5px;
   position: relative;
 }
@@ -121,7 +216,14 @@ header .button {
   height: 60px;
   overflow: hidden;
 }
-.heart {
+.heartRed {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 20px;
+  color: red;
+}
+.heartWhite {
   position: absolute;
   top: 10px;
   right: 10px;
@@ -130,4 +232,18 @@ header .button {
 }
 .heart:hover {
   color: red;
+}
+
+/* --------------------Favoris-------------------- */
+.favoris > section {
+  margin: 20px 90px;
+}
+.caroussel {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow: scroll;
+  gap: 24px;
+}
+.caroussel > .characterBox {
+  flex-shrink: 0;
 }

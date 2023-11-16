@@ -1,7 +1,14 @@
 import { Link } from "react-router-dom";
 import logo from "/logoHeader.png";
+import Cookies from "js-cookie";
 
-const Header = () => {
+const Header = ({
+  token,
+  setToken,
+  setVisibleAuthentication,
+  setCharacters,
+  setComics,
+}) => {
   return (
     <header>
       <div>
@@ -19,6 +26,38 @@ const Header = () => {
           <Link to="/favorite" className="button">
             Favoris
           </Link>
+          {!token && (
+            <button
+              onClick={() => {
+                setVisibleAuthentication("signUp");
+              }}
+            >
+              S'inscrire
+            </button>
+          )}
+          {!token && (
+            <button
+              onClick={() => {
+                setVisibleAuthentication("signIn");
+              }}
+            >
+              Se connecter
+            </button>
+          )}
+          {token && (
+            <button
+              onClick={() => {
+                Cookies.remove("token");
+                Cookies.remove("characters");
+                Cookies.remove("comics");
+                setToken(null);
+                setCharacters([]);
+                setComics([]);
+              }}
+            >
+              Se déconnecter
+            </button>
+          )}
         </div>
       </div>
     </header>
