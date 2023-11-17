@@ -30,7 +30,6 @@ const Authentication = ({
         setToken(response.data.token);
         setCharacters(response.data.characters);
         setComics(response.data.comics);
-        console.log(response);
       }
       setVisibleAuthentication(null);
     } catch (error) {

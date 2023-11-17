@@ -200,11 +200,11 @@ header button {
 .characters > section:last-child {
   display: flex;
   flex-wrap: wrap;
-  gap: 21.7px;
+  gap: 15px;
 }
 .characterBox {
   background-color: white;
-  width: 213px;
+  width: calc((100% - 75px) / 6);
   height: 273.27px;
   border-radius: 5px;
   position: relative;
@@ -273,7 +273,7 @@ span {
   display: flex;
   flex-wrap: nowrap;
   overflow: scroll;
-  gap: 24px;
+  gap: 15px;
 }
 .emptyFav {
   width: 100%;

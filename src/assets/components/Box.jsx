@@ -11,7 +11,6 @@ const Box = ({
   setCharacters,
   type,
 }) => {
-  console.log(x.name);
   return (
     <>
       <img src={x.picture} alt="pictureCharacter" />
