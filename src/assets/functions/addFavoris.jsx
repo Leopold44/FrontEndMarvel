@@ -12,12 +12,9 @@ const addFavoris = async (
     if (!token) {
       setVisibleAuthentication("signIn");
     } else {
-      const response = await axios.post(
-        `https://site--marvel--nlvzpbyz5k82.code.run/${type}/${id}`,
-        {
-          token,
-        }
-      );
+      const response = await axios.post(`http://localhost:3000/${type}/${id}`, {
+        token,
+      });
       Cookies.set(`${type}`, response.data[type]);
       setFavoris(response.data[type]);
     }

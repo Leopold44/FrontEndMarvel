@@ -17,13 +17,10 @@ const Favoris = ({
   const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
     const fetchData = async () => {
-      const response = await axios.post(
-        `https://site--marvel--nlvzpbyz5k82.code.run/favorite`,
-        {
-          char: characters,
-          comics: comics,
-        }
-      );
+      const response = await axios.post(`http://localhost:3000/favorite`, {
+        char: characters,
+        comics: comics,
+      });
       setData(response.data);
       setIsLoading(false);
     };
