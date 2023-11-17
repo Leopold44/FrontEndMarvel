@@ -1,5 +1,4 @@
-import logo from "/logo.png";
-import { motion } from "framer-motion";
+import Loading from "./Loading";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -47,29 +46,14 @@ const Comics = ({ token, setVisibleAuthentication, comics, setComics }) => {
   };
 
   return isLoading ? (
-    <motion.div
-      className="transition"
-      animate={{
-        scale: [1, 2, 2, 2, 1],
-        rotate: [0, 90, 90, 180, 0],
-      }}
-      transition={{
-        duration: 1,
-        ease: "easeInOut",
-        times: [0, 0.2, 0.5, 0.8, 1],
-        repeat: Infinity,
-        repeatDelay: 1,
-      }}
-    >
-      <img src={logo} alt="" />
-    </motion.div>
+    <Loading />
   ) : (
     <main className="characters">
       <section>
         <input
           type="text"
           id="search"
-          placeholder="Quel personnage recherches-tu ?"
+          placeholder="Quel comics recherches-tu ?"
           onChange={(elem) => {
             setSearch(elem.target.value);
           }}

@@ -1,5 +1,5 @@
-import logo from "/logo.png";
-import { motion } from "framer-motion";
+import Loading from "./Loading";
+import { addFavoris } from "../functions/addFavoris.js";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -9,7 +9,6 @@ import {
   faHeart as faHeartSolid,
 } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
-import Cookies from "js-cookie";
 
 const Home = ({
   token,
@@ -33,40 +32,8 @@ const Home = ({
     fetchData();
   }, [search]);
 
-  const addFavoris = async (charId) => {
-    try {
-      if (!token) {
-        setVisibleAuthentication("signIn");
-      } else {
-        const response = await axios.post(
-          `http://localhost:3000/character/${charId}`,
-          { token }
-        );
-        Cookies.set("characters", response.data.characters);
-        setCharacters(response.data.characters);
-      }
-    } catch (error) {
-      console.log(error.response.data);
-    }
-  };
-
   return isLoading ? (
-    <motion.div
-      className="transition"
-      animate={{
-        scale: [1, 2, 2, 2, 1],
-        rotate: [0, 90, 90, 180, 0],
-      }}
-      transition={{
-        duration: 1,
-        ease: "easeInOut",
-        times: [0, 0.2, 0.5, 0.8, 1],
-        repeat: Infinity,
-        repeatDelay: 1,
-      }}
-    >
-      <img src={logo} alt="" />
-    </motion.div>
+    <Loading />
   ) : (
     <main className="characters">
       <section>
@@ -78,7 +45,6 @@ const Home = ({
             setSearch(elem.target.value);
           }}
         />
-
         <FontAwesomeIcon icon={faMagnifyingGlass} className="glass" />
       </section>
       <section>
@@ -94,25 +60,23 @@ const Home = ({
               <img src={x.picture} alt="pictureCharacter" />
               <h2>{x.name}</h2>
               <p>{x.description}</p>
-              {characters.find((elem) => elem === x.id) ? (
-                <FontAwesomeIcon
-                  icon={faHeartSolid}
-                  className="heartRed"
-                  onClick={(event) => {
-                    event.stopPropagation();
-                    addFavoris(x.id);
-                  }}
-                />
-              ) : (
-                <FontAwesomeIcon
-                  icon={faHeartRegular}
-                  className="heartWhite"
-                  onClick={(event) => {
-                    event.stopPropagation();
-                    addFavoris(x.id);
-                  }}
-                />
-              )}
+              <FontAwesomeIcon
+                icon={
+                  characters.find((elem) => elem === x.id)
+                    ? { faHeartSolid }
+                    : { faHeartRegular }
+                }
+                className="heartRed"
+                onClick={(event) => {
+                  event.stopPropagation();
+                  addFavoris(
+                    token,
+                    setVisibleAuthentication,
+                    setCharacters,
+                    x.id
+                  );
+                }}
+              />
             </div>
           );
         })}

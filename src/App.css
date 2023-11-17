@@ -257,12 +257,18 @@ header button {
   flex-shrink: 0;
 }
 
+/* --------------------Transition-------------------- */
+.loading {
+  width: 100vw;
+  height: calc(100vh - 90px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .transition {
-  /* background-color: red; */
-  position: absolute;
-  top: 350px;
-  left: 600px;
+  height: 40px;
 }
 .transition > img {
-  height: 100px;
+  height: 40px;
 }
