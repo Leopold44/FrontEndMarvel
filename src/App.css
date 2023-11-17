@@ -282,6 +282,7 @@ span {
 }
 .emptyFav h2 {
   margin: 111.635px 0;
+  color: white;
 }
 .caroussel > .characterBox {
   flex-shrink: 0;
