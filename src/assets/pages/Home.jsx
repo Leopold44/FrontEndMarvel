@@ -3,7 +3,6 @@ import Navbar from "../components/Navbar";
 import Box from "../components/Box";
 import axios from "axios";
 import { useEffect, useState } from "react";
-require("dotenv").config();
 import { useNavigate } from "react-router-dom";
 
 const Home = ({
@@ -12,7 +11,6 @@ const Home = ({
   characters,
   setCharacters,
 }) => {
-  const { ROUTE } = process.env;
   const navigate = useNavigate();
   const [page, setPage] = useState(1);
   const [data, setData] = useState();
@@ -20,7 +18,7 @@ const Home = ({
   const [search, setSearch] = useState("");
   useEffect(() => {
     const fetchData = async () => {
-      const response = await axios.post(`${ROUTE}/?page=${page}`, {
+      const response = await axios.post(`http://localhost:3000/?page=${page}`, {
         title: search,
       });
       setData(response.data);
