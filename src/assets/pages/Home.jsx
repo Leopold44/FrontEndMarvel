@@ -3,7 +3,7 @@ import Navbar from "../components/Navbar";
 import Box from "../components/Box";
 import axios from "axios";
 import { useEffect, useState } from "react";
-
+require("dotenv").config();
 import { useNavigate } from "react-router-dom";
 
 const Home = ({
