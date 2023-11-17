@@ -1,11 +1,11 @@
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Header from "./components/Header";
-import Home from "./components/Home";
-import Character from "./components/Character";
-import Comics from "./components/Comics";
-import Favoris from "./components/Favoris";
-import Authentication from "./components/Authentication";
+import Header from "./assets/components/Header";
+import Home from "./assets/pages/Home";
+import Character from "./assets/pages/Character";
+import Comics from "./assets/pages/Comics";
+import Favoris from "./assets/pages/Favoris";
+import Authentication from "./assets/pages/Authentication";
 import { useState } from "react";
 import Cookies from "js-cookie";
 
@@ -40,7 +40,17 @@ function App() {
               />
             }
           ></Route>
-          <Route path="/Character/:id" element={<Character />}></Route>
+          <Route
+            path="/Character/:id"
+            element={
+              <Character
+                token={token}
+                setVisibleAuthentication={setVisibleAuthentication}
+                comics={comics}
+                setComics={setComics}
+              />
+            }
+          ></Route>
           <Route
             path="/comics"
             element={

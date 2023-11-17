@@ -167,7 +167,16 @@ header button {
   background-color: #1a1b1d;
   top: 90px;
   z-index: 1;
+  justify-content: space-between;
 }
+.characters > section:first-child > div {
+  display: flex;
+  gap: 30px;
+}
+.characters > section:first-child > div > button {
+  width: 130px;
+}
+
 .characters > section > input {
   height: 30px;
   width: 500px;
@@ -196,6 +205,7 @@ header button {
 .characterBox {
   background-color: white;
   width: 213px;
+  height: 273.27px;
   border-radius: 5px;
   position: relative;
 }
@@ -208,11 +218,14 @@ header button {
   object-fit: cover;
   object-position: top;
   border-radius: 5px 5px 0px 0px;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
 }
 .characterBox > h2 {
   margin: 0 10px;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
+  max-height: 40px;
+  overflow: hidden;
+  color: black;
 }
 .characterBox > p {
   margin: 0 10px;
@@ -234,15 +247,24 @@ header button {
   font-size: 20px;
   color: white;
 }
-.heart:hover {
+.heartRed:hover {
   color: red;
 }
-
+.heartWhite:hover {
+  color: red;
+}
+.characters h1 {
+  color: white;
+  font-size: 25px;
+}
+span {
+  color: red;
+}
 /* --------------------Favoris-------------------- */
 .favoris h1 {
   color: white;
   font-size: 25px;
-  margin: 15px 0;
+  margin: 10px 0;
 }
 .favoris > section {
   margin: 0px 90px;
@@ -253,10 +275,17 @@ header button {
   overflow: scroll;
   gap: 24px;
 }
+.emptyFav {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.emptyFav h2 {
+  margin: 111.635px 0;
+}
 .caroussel > .characterBox {
   flex-shrink: 0;
 }
-
 /* --------------------Transition-------------------- */
 .loading {
   width: 100vw;

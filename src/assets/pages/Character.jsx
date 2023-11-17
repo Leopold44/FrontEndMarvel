@@ -1,11 +1,11 @@
+import Box from "../components/Box";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-regular-svg-icons";
-import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { useParams } from "react-router-dom";
 
-const Character = () => {
+const Character = ({ token, setVisibleAuthentication, comics, setComics }) => {
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const { id } = useParams();
@@ -16,20 +16,29 @@ const Character = () => {
       setIsLoading(false);
     };
     fetchData();
-  }, []);
+  }, [id]);
 
   return isLoading ? (
     <p>Page en-cours de chargement</p>
   ) : (
     <main className="characters">
       <section>
-        {data.map((char) => {
+        <h1>
+          Comics liés au personnage <span>{data[1]}</span> :
+        </h1>
+      </section>
+      <section>
+        {data[0].map((x) => {
           return (
-            <div key={char.id} className="characterBox">
-              <img src={char.picture} alt="pictureCharacter" />
-              <h2>{char.name}</h2>
-              <p>{char.description}</p>
-              <FontAwesomeIcon icon={faHeart} className="heart" />
+            <div key={x.id} className="characterBox">
+              <Box
+                x={x}
+                characters={comics}
+                token={token}
+                setVisibleAuthentication={setVisibleAuthentication}
+                setCharacters={setComics}
+                type="comics"
+              />
             </div>
           );
         })}
