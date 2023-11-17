@@ -18,9 +18,12 @@ const Home = ({
   const [search, setSearch] = useState("");
   useEffect(() => {
     const fetchData = async () => {
-      const response = await axios.post(`http://localhost:3000/?page=${page}`, {
-        title: search,
-      });
+      const response = await axios.post(
+        `https://site--marvel--nlvzpbyz5k82.code.run/?page=${page}`,
+        {
+          title: search,
+        }
+      );
       setData(response.data);
       setIsLoading(false);
     };
