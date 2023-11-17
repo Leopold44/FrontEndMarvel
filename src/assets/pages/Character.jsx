@@ -11,7 +11,9 @@ const Character = ({ token, setVisibleAuthentication, comics, setComics }) => {
   const { id } = useParams();
   useEffect(() => {
     const fetchData = async () => {
-      const response = await axios.get(`http://localhost:3000/character/${id}`);
+      const response = await axios.get(
+        `https://site--marvel--nlvzpbyz5k82.code.run/character/${id}`
+      );
       setData(response.data);
       setIsLoading(false);
     };

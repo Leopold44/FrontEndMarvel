@@ -12,7 +12,7 @@ const Comics = ({ token, setVisibleAuthentication, comics, setComics }) => {
   useEffect(() => {
     const fetchData = async () => {
       const response = await axios.post(
-        `http://localhost:3000/comics/?page=${page}`,
+        `https://site--marvel--nlvzpbyz5k82.code.run/?page=${page}`,
         {
           title: search,
         }
