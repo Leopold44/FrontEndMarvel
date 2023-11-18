@@ -17,13 +17,19 @@ const Authentication = ({
     event.preventDefault();
     try {
       if (visibleAuthentication === "signUp") {
-        const response = await axios.post("http://localhost:3000/signup", user);
+        const response = await axios.post(
+          "https://site--marvel--nlvzpbyz5k82.code.run/signup",
+          user
+        );
         Cookies.set("token", `${response.data.token}`);
         Cookies.set("characters", ``);
         Cookies.set("comics", ``);
         setToken(response.data.token);
       } else {
-        const response = await axios.post("http://localhost:3000/signin", user);
+        const response = await axios.post(
+          "https://site--marvel--nlvzpbyz5k82.code.run/signin",
+          user
+        );
         Cookies.set("token", `${response.data.token}`);
         Cookies.set("characters", `${response.data.characters}`);
         Cookies.set("comics", `${response.data.comics}`);
