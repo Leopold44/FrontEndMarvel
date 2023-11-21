@@ -5,12 +5,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const Home = ({
-  token,
-  setVisibleAuthentication,
-  characters,
-  setCharacters,
-}) => {
+const Home = () => {
   const navigate = useNavigate();
   const [page, setPage] = useState(1);
   const [data, setData] = useState();
@@ -45,14 +40,7 @@ const Home = ({
                 navigate(`/character/${x.id}`);
               }}
             >
-              <Box
-                x={x}
-                characters={characters}
-                token={token}
-                setVisibleAuthentication={setVisibleAuthentication}
-                setCharacters={setCharacters}
-                type="characters"
-              />
+              <Box x={x} type="characters" />
             </div>
           );
         })}

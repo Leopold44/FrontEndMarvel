@@ -1,16 +1,18 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import axios from "axios";
 import Cookies from "js-cookie";
+import { AppContext } from "../../Context";
 
-const Authentication = ({
-  setVisibleAuthentication,
-  visibleAuthentication,
-  setToken,
-  setCharacters,
-  setComics,
-}) => {
+const Authentication = () => {
+  const {
+    setToken,
+    setCharacters,
+    setComics,
+    visibleAuthentication,
+    setVisibleAuthentication,
+  } = useContext(AppContext);
   const [user, setUser] = useState();
   const [error, setError] = useState();
   const sendData = async (event) => {

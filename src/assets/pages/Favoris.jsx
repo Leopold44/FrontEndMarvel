@@ -1,20 +1,15 @@
 import axios from "axios";
 import Loading from "../components/Loading";
 import Box from "../components/Box";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { AppContext } from "../../Context";
 
-const Favoris = ({
-  token,
-  setVisibleAuthentication,
-  characters,
-  setCharacters,
-  comics,
-  setComics,
-}) => {
+const Favoris = () => {
   const navigate = useNavigate();
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
+  const { characters, comics } = useContext(AppContext);
   useEffect(() => {
     const fetchData = async () => {
       const response = await axios.post(
@@ -51,14 +46,7 @@ const Favoris = ({
                     navigate(`/character/${x.id}`);
                   }}
                 >
-                  <Box
-                    x={x}
-                    characters={characters}
-                    token={token}
-                    setVisibleAuthentication={setVisibleAuthentication}
-                    setCharacters={setCharacters}
-                    type="characters"
-                  />
+                  <Box x={x} type="characters" />
                 </div>
               );
             })
@@ -76,14 +64,7 @@ const Favoris = ({
               data.comics.map((x) => {
                 return (
                   <div key={x.id} className="characterBox">
-                    <Box
-                      x={x}
-                      characters={comics}
-                      token={token}
-                      setVisibleAuthentication={setVisibleAuthentication}
-                      setCharacters={setComics}
-                      type="comics"
-                    />
+                    <Box x={x} type="comics" />
                   </div>
                 );
               })

@@ -4,7 +4,7 @@ import Box from "../components/Box";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-const Comics = ({ token, setVisibleAuthentication, comics, setComics }) => {
+const Comics = () => {
   const [page, setPage] = useState(1);
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
@@ -32,14 +32,7 @@ const Comics = ({ token, setVisibleAuthentication, comics, setComics }) => {
         {data.map((x) => {
           return (
             <div key={x.id} className="characterBox">
-              <Box
-                x={x}
-                characters={comics}
-                token={token}
-                setVisibleAuthentication={setVisibleAuthentication}
-                setCharacters={setComics}
-                type="comics"
-              />
+              <Box x={x} type="comics" />
             </div>
           );
         })}

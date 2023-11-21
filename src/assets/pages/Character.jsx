@@ -1,11 +1,9 @@
 import Box from "../components/Box";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHeart } from "@fortawesome/free-regular-svg-icons";
 import { useParams } from "react-router-dom";
 
-const Character = ({ token, setVisibleAuthentication, comics, setComics }) => {
+const Character = () => {
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const { id } = useParams();
@@ -33,14 +31,7 @@ const Character = ({ token, setVisibleAuthentication, comics, setComics }) => {
         {data[0].map((x) => {
           return (
             <div key={x.id} className="characterBox">
-              <Box
-                x={x}
-                characters={comics}
-                token={token}
-                setVisibleAuthentication={setVisibleAuthentication}
-                setCharacters={setComics}
-                type="comics"
-              />
+              <Box x={x} type="comics" />
             </div>
           );
         })}

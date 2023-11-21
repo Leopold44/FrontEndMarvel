@@ -1,14 +1,17 @@
 import { Link } from "react-router-dom";
 import logo from "/logoHeader.png";
 import Cookies from "js-cookie";
+import { useContext } from "react";
+import { AppContext } from "../../Context";
 
-const Header = ({
-  token,
-  setToken,
-  setVisibleAuthentication,
-  setCharacters,
-  setComics,
-}) => {
+const Header = () => {
+  const {
+    token,
+    setToken,
+    setCharacters,
+    setComics,
+    setVisibleAuthentication,
+  } = useContext(AppContext);
   return (
     <header>
       <div>
