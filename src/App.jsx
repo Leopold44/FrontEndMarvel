@@ -6,45 +6,28 @@ import Character from "./assets/pages/Character";
 import Comics from "./assets/pages/Comics";
 import Favoris from "./assets/pages/Favoris";
 import Authentication from "./assets/pages/Authentication";
-import { AppContext } from "./Context";
-import Cookies from "js-cookie";
-import { useState } from "react";
+import AppContextProvider, { AppContext } from "./Context";
 
 function App() {
-  const [visibleAuthentication, setVisibleAuthentication] = useState(null);
-  const [token, setToken] = useState(Cookies.get("token") || null);
-  const [characters, setCharacters] = useState(
-    (Cookies.get("characters") && Cookies.get("characters").split(",")) || []
-  );
-  const [comics, setComics] = useState(
-    (Cookies.get("comics") && Cookies.get("comics").split(",")) || []
-  );
   return (
-    <AppContext.Provider
-      value={{
-        visibleAuthentication,
-        setVisibleAuthentication,
-        token,
-        setToken,
-        characters,
-        setCharacters,
-        comics,
-        setComics,
-      }}
-    >
-      <Router>
-        <div className="app">
-          <Header />
-          <Routes>
-            <Route path="/" element={<Home />}></Route>
-            <Route path="/Character/:id" element={<Character />}></Route>
-            <Route path="/comics" element={<Comics />}></Route>
-            <Route path="/favorite" element={<Favoris />}></Route>
-          </Routes>
-          {visibleAuthentication && <Authentication />}
-        </div>
-      </Router>
-    </AppContext.Provider>
+    <AppContextProvider>
+      <AppContext.Consumer>
+        {(context) => (
+          <Router>
+            <div className="app">
+              <Header />
+              <Routes>
+                <Route path="/" element={<Home />}></Route>
+                <Route path="/Character/:id" element={<Character />}></Route>
+                <Route path="/comics" element={<Comics />}></Route>
+                <Route path="/favorite" element={<Favoris />}></Route>
+              </Routes>
+              {context.visibleAuthentication && <Authentication />}
+            </div>
+          </Router>
+        )}
+      </AppContext.Consumer>
+    </AppContextProvider>
   );
 }
 

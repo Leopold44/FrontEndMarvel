@@ -29,6 +29,7 @@ const Home = () => {
     <Loading />
   ) : (
     <main className="characters">
+      {console.log("hello")}
       <Navbar setSearch={setSearch} page={page} setPage={setPage} />
       <section>
         {data.map((x) => {
